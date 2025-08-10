@@ -91,7 +91,6 @@ def reminder() -> Any:
     reminders.append(reminder_item)
     return jsonify({"message": "Reminder set", "reminder": reminder_item}), 200
 
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=settings.port, debug=True)
 
