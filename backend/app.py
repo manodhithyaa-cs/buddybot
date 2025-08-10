@@ -20,7 +20,6 @@ reminders: list[Dict[str, Any]] = []
 def health() -> Any:
     return jsonify({"status": "ok", "time": int(time.time())})
 
-
 @app.post("/chat")
 def chat() -> Any:
     data = request.get_json(silent=True) or {}
@@ -63,7 +62,6 @@ def weather() -> Any:
     except Exception as exc:  # noqa: BLE001 - simple MVP error handling
         return jsonify({"error": "Unexpected error", "details": str(exc)}), 500
 
-
 @app.get("/feature/joke")
 def joke() -> Any:
     try:
@@ -73,7 +71,6 @@ def joke() -> Any:
         return jsonify({"setup": j.get("setup"), "punchline": j.get("punchline")})
     except Exception as exc:  # noqa: BLE001 - simple MVP error handling
         return jsonify({"error": "Failed to fetch joke", "details": str(exc)}), 502
-
 
 @app.post("/feature/reminder")
 def reminder() -> Any:
@@ -93,5 +90,3 @@ def reminder() -> Any:
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=settings.port, debug=True)
-
-
